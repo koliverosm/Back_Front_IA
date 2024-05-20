@@ -4,7 +4,7 @@ from flask_cors import CORS
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 import os
 from decouple import config as datos
-import whisper
+#import whisper
 # Routes
 from src.routes import usuario
 from src.routes import uploads
@@ -36,6 +36,5 @@ def _init_app(config):
         autenticacion.autenticacion, url_prefix='/autenticacion')
     app.register_blueprint(autorizacion.verify_token,
                            url_prefix='/verify_token')
-    app.register_blueprint(voicesuser.recognition,
-                           url_prefix='/recognition')
+    app.register_blueprint(voicesuser.recognition,url_prefix='/recognition')
     return app

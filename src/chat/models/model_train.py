@@ -6,16 +6,21 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.optimizers import SGD
 import pickle as abrir
-
+import os
+# __ Desactivar Mensajes De La Consola
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 # Configuración inicial
 lemmatizer = WordNetLemmatizer()
-categorias = json.loads(open('../recursos/patrones/categorias.json').read())
+categorias = json.loads(open('../resources/patrones/categorias.json').read())
 symbol_ignore = ['?', '!', '¿', '.', ',']
 
 # Preprocesamiento de datos
 palabras = []
 classes = []
 doc_category = []
+
 for categoria in categorias['patterns_tag']:
     for pattern in categoria['patterns']:
         word_list = nltk.word_tokenize(pattern)
@@ -27,9 +32,9 @@ for categoria in categorias['patterns_tag']:
 palabras = sorted(set(palabras))
 
 # Guardar palabras y clases
-with open('../recursos/palabras/palabras.pkl', 'wb') as archivo:
+with open('../resources/palabras/palabras.pkl', 'wb') as archivo:
     abrir.dump(palabras, archivo)
-with open('../recursos/clases/classes.pkl', 'wb') as archivo:
+with open('../resources/clases/classes.pkl', 'wb') as archivo:
     abrir.dump(classes, archivo)
 
 entrenamiento_x = []
@@ -57,5 +62,5 @@ model.compile(loss='categorical_crossentropy', optimizer=SGD(
     learning_rate=0.001, decay=1e-6, momentum=0.9, nesterov=True), metrics=['accuracy'])
 
 # Entrenar y guardar el modelo
-model.fit(entrenamiento_x, entrenamiento_y, epochs=2000, batch_size=5, verbose=1 )
-model.save("../recursos/modelo/initial_model.h5")
+model.fit(entrenamiento_x, entrenamiento_y, epochs=1000, batch_size=5,verbose=1 )
+model.save("../resources/modelo/initial_model.h5")

@@ -1,6 +1,6 @@
 # Database
 #from src.bd.bd import MyDbEnty
-from ...bd.bdxamm import MyDbEnty
+from ...database.bdxamm import MyDbEnty
 # Errors
 from ...utils.service_error import CustomException
 # Models
@@ -33,8 +33,8 @@ class AuthService():
                 row = cursor.fetchone()
                 if row != None:
                     bd.kill_conexion(connection)
-                    print('ID: ',row[0],' USERNAME: ', row[1],'CONTRASEÑA: ', None, 'ROL: ', row[2]) 
-                    authenticated_user = User_login(int(row[0]), row[1], None, row[2])
+                    print('ID: ',row[0],'NAME: ', row[1] ,'USERNAME: ', row[2],'CONTRASEÑA: ', None, 'ROL: ', row[3]) 
+                    authenticated_user = User_login(int(row[0]), row[1],  row[2] ,None, row[3])
             return authenticated_user
         except CustomException as ex:
             print( CustomException(ex))         

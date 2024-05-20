@@ -15,7 +15,7 @@ def index_verify_token():
 
 
 @cross_origin()
-@verify_token.route('/now', methods=['GET', 'POST'])
+@verify_token.route('/now', methods=['GET', 'POST','PUT'])
 async def verifytoken():
     if request.method == 'POST':
         headers = request.headers

@@ -45,15 +45,16 @@ class UserFile():
 
 class User_login():
 
-    def __init__(self, id, username, password,  roles) -> None:
+    def __init__(self, id, name, username, password,  roles) -> None:
         self.__id = id
+        self.__name = name
         self.__username = username
         self.__password = password
         self.__roles = roles
-  
-    
-    def user_validated(self, id,  username, password,  roles):
+
+    def user_validated(self, id, name, username, password,  roles):
         self.__id = id
+        self.__name = name
         self.__username = username
         self.__password = password
         self.__roles = roles
@@ -64,6 +65,12 @@ class User_login():
 
     def set_id(self, id):
         self.__id = id
+
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, name):
+        self.__name = name
 
     def get_username(self):
         return self.__username
@@ -85,5 +92,6 @@ class User_login():
 
     def get_roles(self):
         return self.__roles
+
     def get_email(self):
         return self.__email

@@ -1,16 +1,18 @@
 from email import message_from_file
 from flask import current_app, jsonify, Blueprint, request
-import os
 from werkzeug.utils import secure_filename
 from ..chat.chatnami import Asistente
-
+import os
+# __ Desactivar Mensajes De La Consola
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 from decouple import config as datos
-from openai import OpenAI
+#from openai import OpenAI
 
 # main = Asistente()
 
-client = OpenAI(
-    api_key=datos('OPENAI_API_KEY'),)
+#client = OpenAI(api_key=datos('OPENAI_API_KEY'),)
 
 recognition = Blueprint('recognition', __name__)
 
@@ -50,15 +52,12 @@ async def voice():
             audio.save(upload_path)
             audio_file = open(upload_path, 'rb')
             print(audio_file)
-            transcription = client.audio.transcriptions.create(
-                model="whisper-1",
-                file=audio_file
-            )
+           # transcription = client.audio.transcriptions.create(model="whisper-1",file=audio_file)
             # transcribed = openai.Audio.transcribe("whisper-1",audio_file)
             # model = current_app.config['MODEL']
             # result =  model.transcribe(upload_path)
             # print(result["text"])
-            return jsonify({'response': transcription['text']}), 201
+            return jsonify({'response': 'transcription[text]'}), 201
         else:
             return jsonify({'Error': 'No se pudo obtener la foto'}), 404
     except Exception as error_general:
@@ -69,12 +68,11 @@ async def voice():
 async def text():
     try:
         text = request.json['text']
-        print(text)
+        print('User: ',text)
         if text:
             respuesta = await Asistente.readtext(text)
-
             return jsonify({'response': respuesta}), 201
         else:
             return jsonify({'Error': ''}), 404
     except Exception as error_general:
-        return jsonify({"error": "Error general", "informacion": str(error_general)}), 500
+        return jsonify({"error": "Error general", "informacion": str(error_general)}),500

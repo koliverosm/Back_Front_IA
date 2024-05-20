@@ -1,67 +1,74 @@
-TF_ENABLE_ONEDNN_OPTS=0
-import json
-from keras.models import load_model
-import pickle
-from .procesamiento.nlp import Preprocessing
-from .procesamiento import nlp
-import os
-search_name = nlp.CapturarNombre()
-basepath = os.path.dirname(__file__)
-# Cargar Los Modulos PreProsesados
-intents =  json.loads(open(basepath+'/patrones/categorias.json').read())
-words = pickle.load(open(basepath+'/palabras/palabras.pkl', 'rb'))
-classes = pickle.load(open(basepath+'/clases/classes.pkl', 'rb'))
-model = load_model(basepath+'/modelo/initial_model.h5')
+## _____     Importacion De Librerias _____________________________##
 
-# Funcion Que generar El PDF
+from .user_actions.functions import funciones
+from flask import jsonify
+from .resources.procesamiento import nlp
+from .resources.procesamiento.nlp import Preprocessing
+import pickle
+from keras.models import load_model
+import json
+#from transformers import GPT2LMHeadModel, GPT2Tokenizer
+import os
+# __ Desactivar Mensajes De La Consola
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+# ______________________________________
+## ________________________________________________________________##
+
+search_name = nlp.CapturarNombre()
+search_function = funciones()
+dir_actual = os.path.dirname(__file__)  # Cargar El Directorio actual
+# Cargar Nuestros  Modelos  PreEntrenados
+intents = json.loads(open(dir_actual+'/resources/patrones/categorias.json').read())
+words = pickle.load(open(dir_actual+'/resources/palabras/palabras.pkl', 'rb'))
+classes = pickle.load(open(dir_actual+'/resources/clases/classes.pkl', 'rb'))
+model = load_model(dir_actual+'/resources/modelo/initial_model.h5')
+## _____________________________________________________________###
+
+# Cargar Modelo Gpt-2
+# Puedes usar otros tamaños de modelo como "gpt2-medium", "gpt2-large", etc.
+#model_name = 'gpt2'
+#tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+#modelgpt2 = GPT2LMHeadModel.from_pretrained(model_name)
+
+## ____________________________________________________________####
+
 
 class Asistente():
 
-    def view_pdf(self ,response: str):
+    '''async def modelogpt(text):
 
-        return "view_pdf"
-    '''while True:
-        message = input("TU:  ")
-        intent, confidence = Preprocessing.predict_class(
-            message, model, words, classes)
+        input_ids = tokenizer.encode(text, return_tensors="pt")
+        max_length = 20  # Longitud máxima del texto generado
+        num_return_sequences = 1  # Número de secuencias de texto a generar
+        output_sequences = modelgpt2.generate(
+            input_ids, max_length=max_length, num_return_sequences=num_return_sequences, temperature=1.0)
+        return tokenizer.decode(output_sequences[0], skip_special_tokens=True)'''
 
-        if confidence < 0.5:  # Umbral de confianza ajustable según necesites
-            print("No se encontró un patrón relevante. Redirigiendo al modelo de texto generativo.")
-        else:
-            response = Preprocessing.get_response(intent, intents)
-            if response == "crear volante pdf":
-                response_ = view_pdf(response)
-                print("Respuesta: ", response_)
-            
-            elif response == "nombre usuario":
-                print(search_name.process_message(message))
-            
-            else:
-                print("Respuesta General: ", response)'''
     @classmethod
-    async def readtext(self , message):
-        intent, confidence = Preprocessing.predict_class(
-            message, model, words, classes)
-
-        if confidence < 0.5:  # Umbral de confianza ajustable según necesites
-            print("No se encontró un patrón relevante. Redirigiendo al modelo de texto generativo.")
-            return 'No se encontró un patrón relevante. Redirigiendo al modelo de texto generativo'
-        else:
-            response = Preprocessing.get_response(intent, intents)
-            if response == "crear volante pdf":
-                response_ = self.view_pdf(response)
-                print("Respuesta: ", response_)
-                return response_
-            elif response == "nombre usuario":
-                print(search_name.process_message(message))
-                return search_name.process_message(message)
+    async def readtext(cls, message):
+        try:
+            intent, confidence = Preprocessing.predict_class(
+                message, model, words, classes)
+            if confidence < 0.5:  # Umbral de confianza ajustable según necesites
+                promt = f'Usuario: {message} Sistema:'
+                #respuestagpt = await cls.modelogpt(promt)
+                '''  notification.notify(timeout=10, ticker='NAMI BASE',
+                                    title="GPTGENERATED", message=f'{respuestagpt}', app_name='Nami', toast=True)'''
+                respuestagpt ="Modelo Generativo"
+                return respuestagpt
             else:
-                print("Respuesta General: ", response)
-                return response
-
-        return {"response": 'sin respuesta'}
-
-
-
-
-    
+                response = await Preprocessing.get_response(intent, intents)
+                if response == "generar_certificado":
+                    response_ = await  search_function.generar_certificado(response)
+                    return response_
+                elif response == "nombre usuario":
+                    print(search_name.process_message(message))
+                    return search_name.process_message(message)
+                else:
+                    print("Respuesta General: ", response)
+                    return response
+        except Exception as error_general:
+            print({"informacion": str(error_general)})
+            return "Error En Chatnami", 500

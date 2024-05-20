@@ -1,0 +1,268 @@
+{
+  "patterns_tag": [
+    {
+      "tag": "nombre_Nami",
+      "patterns": [
+        "¿cómo te llamas?",
+        "dime tu nombre",
+        "cuál es tu nombre"
+      ],
+      "responses": [
+        "Me llamo Nami",
+        "Mi nombre es Nami"
+      ]
+    },
+    {
+      "tag": "informacion_CUL",
+      "patterns": [
+        "¿qué es la CUL?",
+        "información sobre la CUL",
+        "explícame sobre la CUL"
+      ],
+      "responses": [
+        "La Corporación Universitaria Latinoamericana (CUL) es una institución de educación superior en Barranquilla, Colombia."
+      ]
+    },
+    {
+      "tag": "direccion",
+      "patterns": [
+        "¿dónde está ubicada la CUL?",
+        "dirección de la CUL",
+        "dónde se encuentra la CUL"
+      ],
+      "responses": [
+        "La dirección de la CUL es Cl. 58 #55 - 24 A, Nte. Centro Histórico, Barranquilla, Atlántico"
+      ]
+    },
+    {
+      "tag": "Errores_Nami",
+      "patterns": [
+        "no entiendo",
+        "no tiene sentido",
+        "no me ayudas",
+        "no comprendo",
+        "esto no funciona"
+      ],
+      "responses": [
+        "Lo siento, parece que hubo un error. ¿Puedes reformular tu pregunta?",
+        "Disculpa si mi respuesta no fue clara. ¿Cómo puedo ayudarte mejor?",
+        "Entiendo que estás confundido. ¿Puedes darme más detalles?",
+        "Mis disculpas si te confundí. ¿Puedes decirme qué parte no entendiste?",
+        "Lo siento, parece que me equivoqué. ¿Puedes repetir tu pregunta?"
+      ]
+    },
+    {
+      "tag": "creadores_del_modelo",
+      "patterns": [
+        "quien te creo",
+        "tus creadores",
+        "quien te desarrollo"
+      ],
+      "responses": [
+        "Nami fue creada por Kevin Olivero, Isaac Perez y Roberto Linero utilizando Python para NLP."
+      ]
+    },
+    {
+      "tag": "consulta_Informacion",
+      "patterns": [
+        "información sobre",
+        "¿qué sabes sobre"
+      ],
+      "responses": [
+        "¡Claro! Aquí tienes la información:"
+      ]
+    },
+    {
+      "tag": "generar_volante_matricula",
+      "patterns": [
+        "generar volante de matrícula",
+        "volante de matrícula"
+      ],
+      "responses": [
+        "crear_volante_pdf"
+      ]
+    },
+    {
+      "tag": "generar_recibo_cuota",
+      "patterns": [
+        "generar recibo de cuota",
+        "recibo de cuota"
+      ],
+      "responses": [
+        "crear_recibo_pdf"
+      ]
+    },
+    {
+      "tag": "reintegro",
+      "patterns": [
+        "solicitar reintegro",
+        "información sobre reintegro"
+      ],
+      "responses": [
+        "solicitud_reintegro"
+      ]
+    },
+    {
+      "tag": "transferencia_interna",
+      "patterns": [
+        "solicitar transferencia interna",
+        "información sobre transferencia interna"
+      ],
+      "responses": [
+        "solicitud_transferencia_interna"
+      ]
+    },
+    {
+      "tag": "financiamiento_matrícula",
+      "patterns": [
+        "información sobre financiamiento de matrícula",
+        "opciones de financiamiento para matrícula"
+      ],
+      "responses": [
+        "info_financiamiento_interna"
+      ]
+    },
+    {
+      "tag": "becas_ayudas",
+      "patterns": [
+        "solicitar beca",
+        "información sobre becas"
+      ],
+      "responses": [
+        "info_becas_ayudas"
+      ]
+    },
+    {
+      "tag": "situación_financiera_atipica",
+      "patterns": [
+        "ayuda financiera especial",
+        "situación financiera complicada"
+      ],
+      "responses": [
+        "info_financiera_atipica"
+      ]
+    },
+    {
+      "tag": "situación_academica_atipica",
+      "patterns": [
+        "apoyo académico especial",
+        "situación académica complicada"
+      ],
+      "responses": [
+        "info_academica_atipica"
+      ]
+    },
+    {
+      "tag": "orden_pago_certificados",
+      "patterns": [
+        "pagar certificado",
+        "orden de pago para certificados"
+      ],
+      "responses": [
+        "generar_orden_pago_certificado"
+      ]
+    },
+    {
+      "tag": "solicitud_certificado",
+      "patterns": [
+        "solicitar certificado",
+        "obtener certificado"
+      ],
+      "responses": [
+        "generar_certificado"
+      ]
+    },
+    {
+      "tag": "transferencia_externa",
+      "patterns": [
+        "transferirme desde otra institución",
+        "información sobre transferencia externa"
+      ],
+      "responses": [
+        "info_transferencia_externa"
+      ]
+    },
+    {
+      "tag": "Identificarse",
+      "patterns": [
+        "iniciar sesión",
+        "identificarme"
+      ],
+      "responses": [
+        "abrir_identificador"
+      ]
+    },
+    {
+      "tag": "solicitud_informacion_admision",
+      "patterns": [
+        "¿Cómo solicito información de admisión?",
+        "Quiero conocer los requisitos de admisión",
+        "Información para ingresar a la universidad"
+      ],
+      "responses": [
+        "Puedes obtener información de admisión en nuestra página web",
+        "Los requisitos de admisión incluyen..."
+      ]
+    },
+    {
+      "tag": "solicitud_formulario_admision",
+      "patterns": [
+        "¿Dónde puedo conseguir el formulario de admisión?",
+        "Quiero solicitar el formulario de admisión",
+        "¿Cómo lleno el formulario de admisión?"
+      ],
+      "responses": [
+        "Puedes descargar el formulario de admisión desde nuestra página web",
+        "El formulario de admisión está disponible en nuestra oficina de admisiones"
+      ]
+    },
+    {
+      "tag": "seguimiento_estado_admision",
+      "patterns": [
+        "¿Cómo puedo saber el estado de mi solicitud de admisión?",
+        "¿Cuándo sabré si fui admitido?",
+        "Seguimiento de solicitud de admisión"
+      ],
+      "responses": [
+        "Puedes verificar el estado de tu solicitud en línea",
+        "La decisión de admisión se enviará por correo electrónico"
+      ]
+    },
+    {
+      "tag": "solicitud_entrevista_admision",
+      "patterns": [
+        "¿Es necesaria una entrevista de admisión?",
+        "Quiero programar una entrevista de admisión",
+        "Información sobre la entrevista de admisión"
+      ],
+      "responses": [
+        "La entrevista de admisión es opcional en nuestro proceso",
+        "Puedes programar una entrevista llamando a nuestra oficina de admisiones"
+      ]
+    },
+    {
+      "tag": "requisitos_especiales_admision",
+      "patterns": [
+        "¿Qué debo hacer si tengo requisitos especiales?",
+        "Información sobre admisión con requisitos especiales",
+        "Requisitos de admisión para estudiantes internacionales"
+      ],
+      "responses": [
+        "Para estudiantes internacionales, los requisitos adicionales incluyen...",
+        "Si tienes necesidades especiales, comunícate con nuestra oficina de admisiones para recibir asistencia"
+      ]
+    },
+    {
+      "tag": "orientacion_nuevos_estudiantes",
+      "patterns": [
+        "¿Hay una orientación para nuevos estudiantes?",
+        "Información sobre la orientación para nuevos admitidos",
+        "¿Qué debo hacer después de ser admitido?"
+      ],
+      "responses": [
+        "La orientación para nuevos estudiantes se llevará a cabo en las fechas...",
+        "Después de ser admitido, recibirás información sobre la orientación"
+      ]
+    }
+  ]
+}

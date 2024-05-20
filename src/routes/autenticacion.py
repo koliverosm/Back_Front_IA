@@ -43,4 +43,4 @@ async def auten_token_face():
         encoded_token = Security.generate_token(authenticated_user)
         return jsonify({'success': True, 'token': encoded_token}), 201
     else:
-        return jsonify({'message': 'Unauthorized'}), 401
+        return jsonify({'success':False ,'token': 'Unauthorized'}), 401

@@ -5,7 +5,7 @@ from decouple import config as datos
 from src import _init_app
 from datetime import datetime, timedelta
 from flask_cors import CORS
-import whisper
+#import whisper
 ################# END###################################
 ## INICIALIZADOR DEL BACKEND LLAMANDO LA CLASE INIT_APP##
 configuracion = (config['development'])
@@ -22,7 +22,7 @@ def index():
     name = 'Nami Asistente(Chatbot Prov.101)'
     teams = 'Kevin Oliveros - Isaac Perez - Roberto Lineros'
     date = datetime.now()
-    date = date - timedelta(days=30 + 2)
+    date = date - timedelta(days=60 + 2)
     print(date)
     return jsonify({'Development:': name, 'Proyecto: ': nameproyect, 'Teams: ': teams, 'Fecha De Inicio': date}), 200
 

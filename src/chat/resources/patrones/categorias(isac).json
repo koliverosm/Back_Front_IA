@@ -35,7 +35,7 @@
       ]
     },
     {
-      "tag": "errores",
+      "tag": "Errores_Nami",
       "patterns": [
         "no entiendo lo que estás diciendo.",
         "eso no tiene sentido.",
@@ -179,9 +179,9 @@
       "tag": "orden_pago_certificados",
       "patterns": [
         "necesito pagar por un certificado",
-        "¿cómo puedo obtener una orden de pago para un certificado?",
-        "quiero pagar por mis certificados",
-        "información sobre orden de pago para certificados"
+        "orden de pago para un certificado",
+        "quiero pagar certificados",
+        "información orden pago certificados"
       ],
       "responses": [
         "generar_orden_pago_certificado"
@@ -192,7 +192,7 @@
       "patterns": [
         "quiero solicitar un certificado",
         "necesito un certificado",
-        "¿cómo puedo obtener un certificado?",
+        "¿como puedo obtener un certificado?",
         "solicitud de certificado"
       ],
       "responses": [
@@ -216,7 +216,7 @@
       "patterns": [
         "quiero iniciar sesion en estudiante",
         "inicio sesion estudiante",
-        "iniciar sesion"
+        "iniciar sesion","quiero identificarme","saber mas cosas de mi en la universidad","iniciar sesion","autenticarme"
       ],
       "responses": [
         "abrir_identificador"

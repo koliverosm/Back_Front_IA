@@ -20,3 +20,7 @@ class UploadController():
     def c_getfoto(self, json):
         data = modelo_upload.downloadfile(json)
         return data
+    
+    async def c_getphoto_identy(self, json):
+        data = modelo_upload.search_photo_identy(json)
+        return data

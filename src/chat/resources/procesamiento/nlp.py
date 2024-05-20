@@ -3,7 +3,12 @@ import numpy as np
 import random
 import nltk
 import re
-
+import string
+import os
+# __ Desactivar Mensajes De La Consola
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 #nltk.download('popular')
 class Preprocessing:
     def __init__(self):
@@ -17,10 +22,11 @@ class Preprocessing:
 
         return pro.process_message(frase_capitalizada)
 
-    def clean_up_sentence(self, sentence):
+    def clean_up_sentence(self ,sentence):
+        sentence = sentence.lower()
+        sentence = ''.join([char for char in sentence if char not in string.punctuation])
         sentence_words = nltk.word_tokenize(sentence)
-        sentence_words = [self.lemmatizer.lemmatize(
-            word.lower()) for word in sentence_words]
+        sentence_words = [self.lemmatizer.lemmatize(word) for word in sentence_words]
         return sentence_words
 
     def bag_of_words(self, sentence, words):
@@ -41,13 +47,13 @@ class Preprocessing:
 
 
     @staticmethod
-    def get_response(ints, intents_json):
+    async def get_response(ints, intents_json):
         list_of_intents = intents_json['patterns_tag']
         for intent in list_of_intents:
             if intent['tag'] == ints:
-                result = random.choice(intent['responses'])
+                resultado = random.choice(intent['responses'])
 
-        return result
+        return resultado
 
 
 nlp = es_core_news_sm.load()

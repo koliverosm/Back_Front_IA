@@ -6,22 +6,23 @@ from ..dto.dtoImage import ImagenDTO
 from mysql.connector import Error
 from mysql.connector import IntegrityError
 from flask import jsonify
-from ..bd import bdxamm as base
+from ..database import bdxamm as base
 bd = base.MyDbEnty()
 
 
 class uploads():
     async def load_userFile_form(self, dataUser: UserFile, IMAGEN: ImagenDTO):
         try:
-        
+
             # Ejecutar el procedimiento almacenado
-            print(f' Datos: {dataUser.get_username} {dataUser.get_password} {dataUser.get_email} {IMAGEN.get_namefile}{ IMAGEN.get_id_face}')
+            print(
+                f' Datos: {dataUser.get_username} {dataUser.get_password} {dataUser.get_email} {IMAGEN.get_namefile}{ IMAGEN.get_id_face}')
 
             connection = bd.conectar_con_bd()
             cursor = connection.cursor()  # type: ignore
             cursor.execute("Call Insert_dataUser(%s,%s,%s,%s,%s,%s)",
                            (dataUser.get_username, dataUser.get_password, dataUser.get_email, IMAGEN.get_namefile, IMAGEN.get_datafile, IMAGEN.get_id_face,))
-           
+
            # result = await cursor.fetchone()
            #  print(result)
 
@@ -75,6 +76,7 @@ class uploads():
                 return jsonify({"error": "Error desconocido", "informacion": str(error)}), 500
 
     def downloadfile(self, json):
+
         try:
             id = json.get('id')
             connection = bd.conectar_con_bd()
@@ -93,9 +95,36 @@ class uploads():
                     datafile = result[1]  # type: ignore
                     id_face = result[2]  # type: ignore
                     return ImagenDTO(namefile, datafile, id_face), 200
-                else:
-                    # No se encontraron registros para el id dado
-                    return {"error": "No se encontró el registro."}, 404
+            else:
+                # No se encontraron registros para el id dado
+                return {"error": "No se encontró el registro."}, 404
+
+        except IntegrityError as error:
+            return jsonify({"error": "Violación de la integridad de la clave única", "informacion": str(error)}), 500
+
+        except Exception as error_general:
+            return jsonify({"error": "Error general", "informacion": str(error_general)}), 500
+
+    def search_photo_identy(self, json):
+        try:
+            identy = json.get('identy')
+            connection = bd.conectar_con_bd()
+            cursor = connection.cursor()  # type: ignore
+            cursor.execute("Call getPhotoIdenty(%s)", (identy,))
+            rv = cursor.fetchall()
+            cursor.close()
+            bd.kill_conexion(connection)
+            # Verificar si se obtuvieron resultados
+            if rv:
+
+                for result in rv:
+                    # Suponiendo que 'namefile' es el primer elemento y 'datafile' el segundo en el resultado
+                    namefile = result[0]  # type: ignore
+                    datafile = result[1]  # type: ignore
+                    id_face = result[2]  # type: ignore
+                    return ImagenDTO(namefile, datafile, id_face), 200
+            else:
+                return {"error": f"No se encontró el registro Con ID: {identy}"}, 404
 
         except IntegrityError as error:
             return jsonify({"error": "Violación de la integridad de la clave única", "informacion": str(error)}), 500

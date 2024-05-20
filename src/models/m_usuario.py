@@ -1,6 +1,6 @@
 from config import *
 from flask import jsonify, request
-from ..bd import bdxamm as base
+from ..database import bdxamm as base
 bd = base.MyDbEnty()
 
 

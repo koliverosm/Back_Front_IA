@@ -13,7 +13,8 @@ class Security():
     def generate_token(cls, authenticated_user):
         payload = {
             'iat': datetime.datetime.now(tz=cls.tz),
-            'exp': datetime.datetime.now(tz=cls.tz) + datetime.timedelta(minutes=5),
+            'exp': datetime.datetime.now(tz=cls.tz) + datetime.timedelta(minutes=60),
+            'name': authenticated_user.get_name(),
             'username': authenticated_user.get_username(),
             'roles': authenticated_user.get_roles()
 
@@ -38,7 +39,7 @@ class Security():
                     if 'admin' in roles:
                         authenticated = True
                         data_jwt = payload
-                    elif 'user' in roles:
+                    elif 'asesor' in roles:
                         authenticated = True
                         data_jwt = payload
                     return authenticated, data_jwt, 200

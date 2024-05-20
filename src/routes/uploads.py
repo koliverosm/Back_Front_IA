@@ -51,7 +51,7 @@ def __encrypt(photo_encryted: bytes):
 def index():
     return jsonify({'message': 'Welcome Estas En Ruta Uploads, Apartir De Aqui Todo LLeva /uploads/ + La Ruta Que Deseas Acceder'})
 
-
+####Buscar foto por id de la foto
 @uploadsFile.route('/getfoto', methods=['POST', 'GET'])  # type: ignore
 async def getfoto():
     data = request.get_json()
@@ -72,7 +72,35 @@ async def getfoto():
     else:
         return jsonify({'Error': 'No se pudo obtener la foto'}), 404
 
+#################END 
 
+#########################
+@uploadsFile.route('/getfotoidenty', methods=['POST', 'GET'])  # type: ignore
+async def search_photo():
+    
+    
+    if request.method == 'POST':
+        identy = request.get_json()
+        foto_info, status_code = await carga.c_getphoto_identy(identy)  # type: ignore
+
+        if foto_info and status_code == 200:
+            basepath = os.path.dirname(__file__)
+            # Crear el path completo incluyendo el nombre del archivo para guardar la imagen
+            upload_path = os.path.join(
+                basepath, '../uploads/photo_query', f'{foto_info.namefile}')
+            # Escribir los bytes de la imagen en el archivo
+            with open(upload_path, 'wb') as archivo:
+                archivo.write(foto_info.datafile)  # type: ignore
+            foto_base64 = base64.b64encode(foto_info.datafile).decode('utf-8')
+            # with open(upload_path, 'rb') as f:
+            #          foto = f.read()
+            return jsonify({'namefile': f'{foto_info.namefile}', 'file': foto_base64, 'id_face': f'{foto_info.id_face}'}), status_code
+        elif status_code == 404:
+                      return jsonify(foto_info), status_code
+    else:
+        return jsonify({'Metodo': f'{request.method}'}), 200
+
+###################3
 @uploadsFile.route('/file', methods=['POST'])
 async def upload_file():
 

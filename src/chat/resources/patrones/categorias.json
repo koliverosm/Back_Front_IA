@@ -1,0 +1,255 @@
+{
+  "patterns_tag": [
+    {
+      "tag": "nombre_Nami",
+      "patterns": [
+        "cómo es tu nombre",
+        "cómo te llamas"
+      ],
+      "responses": [
+        "Me llamo Nami",
+        "Mi nombre es Nami",
+        "Me dicen Nami ",
+        "Me conocen como Nami"
+      ]
+    },
+    {
+      "tag": "informacion_CUL",
+      "patterns": [
+        "que es la cul",
+        "cul"
+      ],
+      "responses": [
+        "La Corporacion Universitaria Latinoamericana anteriormente conocida por el nombre de Corporacion Instituto de Artes y Ciencias es una institucion de educacion superior situada en la ciudad de Barranquilla, Colombia.",
+        "Institucion de educacion superior con 56 años de experiencia, ofreciendo programas academicos a nivel tecnologo, profesional y posgrados, "
+      ]
+    },
+    {
+      "tag": "direccion",
+      "patterns": [
+        "donde esta ubicada",
+        "donde se encuentra"
+      ],
+      "responses": [
+        "Cl. 58 #55 - 24 A, Nte. Centro Historico, Barranquilla, Atlántico"
+      ]
+    },
+    {
+      "tag": "errores",
+      "patterns": [
+        "no entiendo lo que estás diciendo.",
+        "eso no tiene sentido.",
+        "no me estás ayudando.",
+        "no logro comprender tu respuesta.",
+        "esto no está funcionando como esperaba."
+      ],
+      "responses": [
+        "Lo siento, parece que hubo un error en mi respuesta. ¿Puedes repetir tu pregunta de otra manera?",
+        "Disculpa si mi respuesta no fue clara. ¿Cómo puedo ayudarte mejor?",
+        "Entiendo que estás confundido. ¿Puedes proporcionarme más detalles para que pueda ayudarte correctamente?",
+        "Lo siento, parece que me equivoqué. ¿Puedes reformular tu pregunta para que pueda entender mejor?",
+        "Mis disculpas si te confundí. ¿Puedes decirme qué parte no entendiste para que pueda explicarlo de otra manera?"
+      ]
+    },
+    {
+      "tag": "creadores",
+      "patterns": [
+        "quienes te crearon",
+        "quien te creo",
+        "quien te desarrollo"
+      ],
+      "responses": [
+        "Nami ha sido Creada en el lenguje de python para NLP, Por un grupo de trabajo espcializados en el area de machine learning , llamados: Kevin Olivero ,Isaac Perez , Roberto Linero",
+        "Mi Creadores Fueron Kevin Oliveros , Isaac Perez ,Roberto Linero",
+        "Fui Creado En Lenguje de programacion de python por el grupo LIPEO",
+        "Nami fue desarrollada en Python por un equipo de especialistas en machine learning compuesto por Kevin Olivero, Isaac Perez y Roberto Linero.",
+        "El equipo conformado por Kevin Olivero, Isaac Perez y Roberto Linero creó Nami utilizando Python para NLP.",
+        "Nami, un proyecto de NLP, fue concebida por Kevin Olivero, Isaac Perez y Roberto Linero, expertos en machine learning, utilizando Python.",
+        "Kevin Olivero, Isaac Perez y Roberto Linero lideraron el desarrollo de Nami en Python para NLP como parte de un equipo de machine learning.",
+        "El grupo de trabajo conformado por Kevin Olivero, Isaac Perez y Roberto Linero se especializó en machine learning para desarrollar Nami en Python."
+      ]
+    },
+    {
+      "tag": "consulta_Informacion",
+      "patterns": [
+        "puedes darme información sobre ",
+        "que sabes sobre"
+      ],
+      "responses": [
+        "¡Claro! Aquí tienes la información sobre...",
+        "Esto es lo que sé sobre..."
+      ]
+    },
+    {
+      "tag": "generar_volante_matricula",
+      "patterns": [
+        "quiero generar un volante de contado",
+        "quiero generar un volante de matricula",
+        "general volante de matricula de contado",
+        "volante de matricula"
+      ],
+      "responses": [
+        "crear_volante_pdf"
+      ]
+    },
+    {
+      "tag": "generar_recibo_cuota",
+      "patterns": [
+        "quiero generar un recibo de cuota",
+        "quiero generar un recibo de deuda",
+        "generar recibo"
+      ],
+      "responses": [
+        "crear_recibo_pdf"
+      ]
+    },
+    {
+      "tag": "reintegro",
+      "patterns": [
+        "quiero solicitar mi reintegro",
+        "necesito información sobre el proceso de reintegro",
+        "¿cómo puedo reintegrarme a la universidad?",
+        "solicitud de reintegro"
+      ],
+      "responses": [
+        "solicitud_reintegro"
+      ]
+    },
+    {
+      "tag": "transferencia_interna",
+      "patterns": [
+        "quiero solicitar una transferencia interna",
+        "necesito información sobre la transferencia interna",
+        "¿cómo puedo transferirme a otro programa dentro de la universidad?",
+        "solicitud de transferencia interna"
+      ],
+      "responses": [
+        "solicitud_transferencia_interna"
+      ]
+    },
+    {
+      "tag": "financiamiento_matrícula",
+      "patterns": [
+        "necesito información sobre opciones de financiamiento para la matrícula",
+        "¿cuáles son las opciones de financiamiento disponibles para la matrícula?",
+        "quiero solicitar un préstamo para pagar mi matrícula",
+        "información sobre financiamiento de matrícula"
+      ],
+      "responses": [
+        "info_financiamiento_interna"
+      ]
+    },
+    {
+      "tag": "becas_ayudas",
+      "patterns": [
+        "¿Cómo puedo solicitar una beca?",
+        "necesito información sobre las becas disponibles",
+        "quiero saber más sobre las ayudas financieras",
+        "información sobre becas y ayudas"
+      ],
+      "responses": [
+        "info_becas_ayudas"
+      ]
+    },
+    {
+      "tag": "situación_financiera_atipica",
+      "patterns": [
+        "tengo una situación financiera especial",
+        "necesito ayuda con mis dificultades financieras",
+        "mi situación económica es atípica",
+        "¿cómo puedo obtener ayuda financiera si mi situación es complicada?"
+      ],
+      "responses": [
+        "info_financiera_atipica"
+      ]
+    },
+    {
+      "tag": "situación_academica_atipica",
+      "patterns": [
+        "tengo una situación académica especial",
+        "necesito ayuda con mis dificultades académicas",
+        "mi situación académica es atípica",
+        "¿cómo puedo obtener apoyo académico si tengo circunstancias complicadas?"
+      ],
+      "responses": [
+        "info_academica_atipica"
+      ]
+    },
+    {
+      "tag": "orden_pago_certificados",
+      "patterns": [
+        "necesito pagar por un certificado",
+        "¿cómo puedo obtener una orden de pago para un certificado?",
+        "quiero pagar por mis certificados",
+        "información sobre orden de pago para certificados"
+      ],
+      "responses": [
+        "generar_orden_pago_certificado"
+      ]
+    },
+    {
+      "tag": "solicitud_certificado",
+      "patterns": [
+        "quiero solicitar un certificado",
+        "necesito un certificado",
+        "¿cómo puedo obtener un certificado?",
+        "solicitud de certificado"
+      ],
+      "responses": [
+        "generar_certificado"
+      ]
+    },
+    {
+      "tag": "transferencia_externa",
+      "patterns": [
+        "quiero transferirme desde otra institución",
+        "necesito información sobre transferencia externa",
+        "¿cómo puedo transferirme desde otra universidad?",
+        "solicitud de transferencia externa"
+      ],
+      "responses": [
+        "info_transferencia_externa"
+      ]
+    },
+    {
+      "tag": "Identificarse",
+      "patterns": [
+        "quiero iniciar sesion en estudiante",
+        "inicio sesion estudiante",
+        "iniciar sesion","loguearme"
+      ],
+      "responses": [
+        "abrir_identificador"
+      ]
+    },
+    {
+      "tag": "Mision_cul",
+      "patterns": [
+        "Cual es la mision de la universidad",
+        "MISION CUL","Cual es la mision de la cul",
+        "mision de la universidad"
+      ],
+      "responses": [
+        "La Corporacion Universitaria Latinoamericana CUL, como institucion de educacion superior, tiene como mision buscar el desarrollo integral de las potencialidades del ser humano, despertando en sus educandos un espiritu reflexivo, orientando al logro de la libertad de pensamiento y pluralismo ideologico que tenga en cuenta la universalidad del saber y particularidad de las formas culturales de la region caribe y el pais."
+      ]
+    },
+    {
+      "tag": "Vision_cul",
+      "patterns": [
+        "cual es la vision de la universidad",
+        "VISION CUL",
+        "vision de la universidad"
+      ],
+      "responses": [
+        "Ser reconocidos por la sociedad como una Institución universitaria de calidad académica y accesible a todas las personas que cumplan con los requisitos academicos."
+      ]
+    },
+    {
+      "tag": "no_coincidente",
+      "patterns": [],
+      "responses": [
+        "no_patterns"
+      ]
+    }
+  ]
+}
